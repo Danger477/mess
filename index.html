@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>This one is for my Varchhu</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			Maria Fernanda, ¡mi amor!<br />
+			¿Recuerdas la primera vez que nos hablamos?<br />
+			<span class="comments">// Fue en el mío jsakska</span><br />
+			Pero eso no impidió nuestra conexión<br />
+			<span class="comments">// Tu cara, tu voz, tu manera de hablar, TUS OJOS</span><br />
+			Ese momento quedó grabado inconscientemente en mi mente.<br />
+			Supe que eras para mí.<br /><span class="comments">// La forma tan dulce en que sonreías</span><br>
+			Y ahora pasamos los días juntos<br /><span class="comments">// Eso me encanta</span><br>
+			Quiero seguir mis días de esa manera<br />
+			Quiero recorrer mi camino junto contigo<br />
+			Y aunque a veces se compliquen las cosas o haya peleas<br />
+			<span class="comments">// Que sin dudas las habrá</span><br />
+			Estoy seguro de que podremos seguir adelante respetándonos mutuamente y amándonos<br />
+			<br>
+			<br>
+			En este pequeño detalle lo que quiero decir es<br />
+			<span class="comments">Fernanda, te amaré por siempre</span><br />
+			<br>
+			<br>
+			Ahora da clic sobre el corazón para que me beses con esos labios lindos<br />
+			<br>
+			<span id="heartspan">
+			<a href="image.jpeg"><i class="fas fa-heart" id="icon"></i></a>
+			</span>
+		</div>
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					Nuestro primer mes es hoy, la espera para nuestro primer año ha comenzado.<br/>
+					<div id="elapseClock"></div>
+				</div>
+			</div>
+		</div>
+		<br>
+						<div id="loveu">
+					TE AMO MUCHO FERNANDA<br/>
+					<div class="signature">- GUIDO</div>
+				</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2016, 8, 5);
+together.setHours(16);
+together.setMinutes(30);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+
+// Contador para el primer año en tiempo real
+(function() {
+    // Fecha objetivo: 27 de abril de 2026 a las 00:00:00
+    var primerAnio = new Date(2026, 3, 27, 0, 0, 0);
+    // Fecha de inicio: 27 de mayo de 2025 a las 00:00:00
+    var inicio = new Date(2025, 4, 27, 0, 0, 0);
+
+    function actualizarContador() {
+        var ahora = new Date();
+        // Si la fecha actual es antes del inicio, muestra 0
+        var desde = (ahora < inicio) ? inicio : ahora;
+        var diff = primerAnio - desde;
+        if (diff > 0) {
+            var dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            var horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            var minutos = Math.floor((diff / (1000 * 60)) % 60);
+            var segundos = Math.floor((diff / 1000) % 60);
+            document.getElementById('elapseClock').textContent =
+                dias + " días " +
+                ("0" + horas).slice(-2) + "h " +
+                ("0" + minutos).slice(-2) + "m " +
+                ("0" + segundos).slice(-2) + "s";
+        } else {
+            document.getElementById('elapseClock').textContent = "¡Ya cumplimos un año!";
+        }
+    }
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+})();
+</script>
+<style>
+/* Centrar y agrandar el contador */
+#elapseClock {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    white-space: nowrap;
+}
+</style>
+<audio id="audioLove" src="Just the Two of Us (feat. Bill Withers).mp3" autoplay loop controls style="display:none;"></audio>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('audioLove');
+    audio.currentTime = 15;
+    // Espera a que el usuario haga clic en cualquier parte para reproducir
+    document.body.addEventListener('click', function playMusic() {
+        audio.play();
+        // Solo la primera vez
+        document.body.removeEventListener('click', playMusic);
+    });
+});
+</script>
+</body>
+</html>
